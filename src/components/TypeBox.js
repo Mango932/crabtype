@@ -30,6 +30,9 @@ function TypeBox() {
             setBackgroundText(
                 randomWords.slice(text.length, randomWords.length)
             );
+            document.getElementById("wrongChar").style.boxShadow = "none";
+            document.getElementById("typedText").style.boxShadow =
+                "1.2px 0 0 0 #c1c0b7";
         } else if (wrongChar === "") {
             setWrongChar(randomWords.slice(text.length - 1, text.length));
             if (randomWords.slice(text.length - 1, text.length) === " ") {
@@ -38,6 +41,9 @@ function TypeBox() {
             setBackgroundText(
                 randomWords.slice(text.length, randomWords.length)
             );
+            document.getElementById("wrongChar").style.boxShadow =
+                "1.2px 0 0 0 rgb(127 29 29)";
+            document.getElementById("typedText").style.boxShadow = "none";
         } else {
             let freeze = text.slice(0, text.length - 1);
             document.getElementById("typeBox").value = freeze;
@@ -47,8 +53,13 @@ function TypeBox() {
     return (
         <div className="flex justify-center items-center">
             <div className="w-[800px] h-[200px] m-0 p-0 font-mono font-semibold text-2xl relative">
-                <span className="text-[#C1C0B7]">{typedText}</span>
-                <span className="text-red-900">{wrongChar}</span>
+                <span id="typedText" className=" text-[#c1c0b7] transition-all">
+                    {typedText}
+                </span>
+
+                <span id="wrongChar" className="text-red-900 transition-all">
+                    {wrongChar}
+                </span>
                 <span className="text-[#646669]">{backgroundText}</span>
             </div>
 
